@@ -1,0 +1,53 @@
+{
+  "name": "modern-react-template",
+  "version": "0.0.0",
+  "description": " A well maintained uptodate react template for generate complex application ",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barimani/modern-react-template.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "webpack",
+    "webapp"
+  ],
+  "author": "Bari Barimani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barimani/modern-react-template/issues"
+  },
+  "homepage": "https://github.com/barimani/modern-react-template#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "react": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.55",
+    "@babel/plugin-proposal-decorators": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-beta.55",
+    "@babel/preset-react": "^7.0.0-beta.55",
+    "@babel/register": "^7.0.0-rc.1",
+    "axios-mock-adapter": "^1.15.0",
+    "babel-loader": "^8.0.0-beta.4",
+    "chai": "^4.1.2",
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jsdom": "^11.12.0",
+    "mocha": "^5.2.0",
+    "react-dom": "^16.4.2",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
