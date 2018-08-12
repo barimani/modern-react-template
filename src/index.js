@@ -5,5 +5,5 @@ const title = 'My title';
 
 ReactDOM.render(
     <div>{title}</div>,
-    document.getElementById('app')
+    document.getElementById('root')
 );
