@@ -1,14 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import store from './store';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
 
+
     render() {
         return (
             <Provider store={store}>
-                <div>Application root</div>
+                <div>
+                    <div>Application root</div>
+                    <div>{this.state?.property}</div>
+                </div>
             </Provider>
         )
     }
