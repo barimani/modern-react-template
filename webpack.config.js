@@ -28,6 +28,11 @@ module.exports = {
                         plugins: ['@babel/plugin-proposal-class-properties']
                     },
                 }
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['babel-loader', 'eslint-loader']
             }
         ]
     },
