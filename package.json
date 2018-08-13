@@ -4,7 +4,8 @@
   "description": " A well maintained uptodate react template for generate complex application ",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
+    "build": "webpack",
     "test": "mocha"
   },
   "repository": {

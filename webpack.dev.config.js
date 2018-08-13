@@ -3,14 +3,19 @@ const {resolve} = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    mode: 'production',
     context: resolve(__dirname, 'src'),
+    devtool: 'cheap-module-source-map',
     entry: {
         app: './App.js',
     },
     output: {
         filename: '[name].bundle.js',
         path: resolve(__dirname, 'dist'),
+    },
+    devServer: {
+        hot: true,
+        publicPath: '/',
+        historyApiFallback: true
     },
     module: {
         rules: [
@@ -33,9 +38,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             inject: true,
             template: resolve(__dirname, 'src/index.html'),
         })
     ]
-};
+}
