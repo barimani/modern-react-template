@@ -1,5 +1,6 @@
 const {resolve} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -7,6 +8,9 @@ module.exports = {
     context: resolve(__dirname, 'src'),
     entry: {
         app: './App.js',
+    },
+    resolve: {
+        modules: [resolve(__dirname, 'src'), 'node_modules']
     },
     output: {
         filename: '[name].bundle.js',
@@ -42,6 +46,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             inject: true,
             template: resolve(__dirname, 'src/index.html'),
