@@ -34,6 +34,19 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: ['babel-loader', 'eslint-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader"
+                }, {
+                    loader: "sass-loader",
+                    options: {
+                        includePaths: ["./src/styles"]
+                    }
+                }]
             }
         ]
     },
@@ -44,4 +57,4 @@ module.exports = {
             template: resolve(__dirname, 'src/index.html'),
         })
     ]
-}
+};

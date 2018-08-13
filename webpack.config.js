@@ -1,6 +1,6 @@
-const webpack = require('webpack')
-const {resolve} = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {resolve} = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: 'production',
@@ -29,13 +29,28 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: ['babel-loader', 'eslint-loader']
-            }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    // fallback to style-loader in development
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader"
+                ]
+            },
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
             inject: true,
             template: resolve(__dirname, 'src/index.html'),
+        }),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         })
     ]
 };
