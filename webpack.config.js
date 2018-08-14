@@ -7,7 +7,7 @@ module.exports = {
     mode: 'production',
     context: resolve(__dirname, 'src'),
     entry: {
-        app: './App.js',
+        app: './Root.js',
     },
     resolve: {
         modules: [resolve(__dirname, 'src'), 'node_modules']

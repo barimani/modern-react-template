@@ -2,6 +2,9 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import TextField from "components/formComponents/TextField";
+import {connect} from "react-redux";
+import {authenticate} from "../actions/auth";
+import {Button} from "@material-ui/core";
 
 /** Synchronous validation: checks for email existence and password with minimum 8 characters */
 const validate = (values) => {
@@ -18,13 +21,16 @@ const validate = (values) => {
     return errors;
 };
 
+const mapDispatchToProps = {authenticate};
+
 @reduxForm({form: 'login', validate})
+@connect(null, mapDispatchToProps)
 export default class Login extends React.Component {
 
-    static propTypes = {handleSubmit: PropTypes.func};
+    static propTypes = {handleSubmit: PropTypes.func, authenticate: PropTypes.func};
 
-    onSubmit = () => {
-
+    onSubmit = (values) => {
+        return this.props.authenticate(values);
     };
 
     render() {
@@ -42,6 +48,7 @@ export default class Login extends React.Component {
                     component={TextField}
                     type="password"
                     label="Password"/>
+                <Button type="submit">Submit</Button>
             </form>
         );
     }

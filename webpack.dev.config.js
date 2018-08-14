@@ -6,7 +6,7 @@ module.exports = {
     context: resolve(__dirname, 'src'),
     devtool: 'cheap-module-source-map',
     entry: {
-        app: './App.js',
+        app: './index.js',
     },
     resolve: {
         modules: [resolve(__dirname, 'src'), 'node_modules']

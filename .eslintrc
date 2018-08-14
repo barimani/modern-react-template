@@ -1,13 +1,16 @@
 {
   "parser": "babel-eslint",
+  "env": {
+    "es6": true
+  },
   "plugins": [
-//    "react"
+    "react"
   ],
   "rules": {
 
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "globals": {
-    "window": true, "require": true, "module": true, "document": true, "process": true
+    "window": true, "require": true, "module": true, "document": true, "process": true, "Promies": true
   }
 }

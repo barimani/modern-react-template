@@ -1,45 +1,47 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import store from 'store';
-import 'styles/test.scss';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import load from 'components/load'
+import Cookies from 'universal-cookie';
+import PropTypes from 'prop-types';
+import {insertToken} from './actions/auth';
+import configureAxios from 'config/axios.config';
+import 'styles/test.scss';
 
+configureAxios();
+const cookies = new Cookies();
 
-/**
- * The root react component that encompasses the whole application.
- * This component includes the following wrappers (HOCs) from top to bottom.
- *
- * Provider: provides the redux {@link store} object throughout the application so other components can connect to it.
- * Persist Gate: @todo not implemented yet.
- * Router: the routing library that is responsible for managing rendering appropriate components based on the path.
- * Switch, Route and Redirect: the very first layer of routing configuration for this project.
- *
- * @see https://redux.js.org/
- * @see https://github.com/rt2zz/redux-persist
- * @see https://www.material-ui.com
- * @see https://reacttraining.com/react-router/
- */
-class App extends React.Component {
+const mapStateToProps = state => ({token: state.auth?.token});
+const mapDispatchToProps = {insertToken};
+
+@connect(mapStateToProps, mapDispatchToProps)
+export default class App extends React.Component {
+
+    static propTypes = {token: PropTypes.string, insertToken: PropTypes.func};
+
+    componentDidMount() {
+        const token = cookies.get('token');
+        this.props.insertToken(token || null);
+    }
+
+    wrap = (Component, protect = false) => {
+        const {token} = this.props;
+        if (token === undefined) return () => <div>Loading...</div>;
+        else if (protect && token === null) return () => <Redirect to="/login"/>;
+        else if (!protect && token) return () => <Redirect to="/dashboard"/>;
+        else return () => <Component/>
+    };
 
     render() {
         return (
-            <Provider store={store}>
-                <div>
-                    <Router>
-                        <Switch>
-                            <Route exact path="/login" component={load('routes/login/Login')}/>
-                            <Redirect from="*" to="/login" />
-                        </Switch>
-                    </Router>
-                </div>
-            </Provider>
+            <Router>
+                <Switch>
+                    <Route exact path="/login" render={this.wrap(load('containers/Login.js'))}/>
+                    <Route path="/dashboard" render={this.wrap(load('containers/Dashboard'), true)}/>
+                    <Redirect from="*" to="/login" />
+                </Switch>
+            </Router>
         )
     }
 }
 
-ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
-);
