@@ -12,7 +12,7 @@ const LoadingPlaceholder = () => <div>
     </div>;
 
 export default url => Loadable({
-    loader: () => import(/* webpackChunkName: "name" */ '../' + url),
+    loader: () => import('../' + url),
     loading: LoadingPlaceholder
 });
 
