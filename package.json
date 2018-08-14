@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/barimani/modern-react-template#readme",
   "dependencies": {
+    "@material-ui/core": "^1.5.0",
     "axios": "^0.18.0",
     "react": "^16.4.2",
     "react-loadable": "^5.3.1",
@@ -32,6 +33,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
@@ -61,6 +63,7 @@
     "mini-css-extract-plugin": "^0.4.1",
     "mocha": "^5.2.0",
     "node-sass": "^4.9.3",
+    "prop-types": "^15.6.2",
     "react-dom": "^16.4.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1",
