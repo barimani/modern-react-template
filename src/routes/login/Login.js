@@ -19,7 +19,7 @@ const validate = (values) => {
 };
 
 @reduxForm({form: 'login', validate})
-export class Login extends React.Component {
+export default class Login extends React.Component {
 
     static propTypes = {handleSubmit: PropTypes.func};
 

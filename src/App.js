@@ -4,9 +4,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import store from 'store';
 import 'styles/test.scss';
-import {Login} from "routes/login/Login";
-// import load from 'components/load'
-import LoadingImage from 'assets/loading.gif';
+import load from 'components/load'
 
 
 /**
@@ -29,10 +27,9 @@ class App extends React.Component {
         return (
             <Provider store={store}>
                 <div>
-                    <img src={LoadingImage}/>
                     <Router>
                         <Switch>
-                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/login" component={load('routes/login/Login')}/>
                             <Redirect from="*" to="/login" />
                         </Switch>
                     </Router>

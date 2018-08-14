@@ -1,6 +1,6 @@
-const webpack = require('webpack')
-const {resolve} = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack');
+const {resolve} = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     context: resolve(__dirname, 'src'),
@@ -13,6 +13,7 @@ module.exports = {
     },
     output: {
         filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: resolve(__dirname, 'dist'),
     },
     devServer: {
@@ -58,6 +59,11 @@ module.exports = {
                 ]
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

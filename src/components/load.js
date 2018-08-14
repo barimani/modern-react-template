@@ -7,11 +7,12 @@ import LoadingImage from 'assets/loading.gif';
  * @param url for the required component to lazy-load
  */
 
-const LazyComponent = () => <div>
+const LoadingPlaceholder = () => <div>
         <img src={LoadingImage}/>
     </div>;
 
 export default url => Loadable({
-    loader: () => import('../' + url),
-    loading: LazyComponent
+    loader: () => import(/* webpackChunkName: "name" */ '../' + url),
+    loading: LoadingPlaceholder
 });
+
