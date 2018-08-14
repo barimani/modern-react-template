@@ -50,6 +50,12 @@ module.exports = {
                         includePaths: ["./src/styles"]
                     }
                 }]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     },

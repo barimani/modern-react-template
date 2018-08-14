@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import store from 'store';
 import 'styles/test.scss';
 import {Login} from "routes/login/Login";
+// import load from 'components/load'
+import LoadingImage from 'assets/loading.gif';
+
 
 /**
  * The root react component that encompasses the whole application.
@@ -25,12 +28,15 @@ class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <Router>
-                    <Switch>
-                        <Route exact path="/login" component={Login}/>
-                        <Redirect from="*" to="/login" />
-                    </Switch>
-                </Router>
+                <div>
+                    <img src={LoadingImage}/>
+                    <Router>
+                        <Switch>
+                            <Route exact path="/login" component={Login}/>
+                            <Redirect from="*" to="/login" />
+                        </Switch>
+                    </Router>
+                </div>
             </Provider>
         )
     }

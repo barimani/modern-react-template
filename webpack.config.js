@@ -1,7 +1,8 @@
 const {resolve} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -13,7 +14,7 @@ module.exports = {
         modules: [resolve(__dirname, 'src'), 'node_modules']
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: 'js/[name].bundle.js',
         path: resolve(__dirname, 'dist'),
     },
     module: {
@@ -43,7 +44,23 @@ module.exports = {
                     "sass-loader"
                 ]
             },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'images/[name].[ext]'
+                        }
+                    }
+                ]
+            }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
@@ -54,8 +71,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: "styles/[name].css",
+            chunkFilename: "styles/[id].css"
         })
     ]
 };
