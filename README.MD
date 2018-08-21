@@ -1,6 +1,16 @@
 # Modern React Template
 A light-weight yet inclusive react web application template.
 
+Start development: 
+```sh
+npm start
+```
+
+Build a distribution:  
+```sh
+npm run build
+```
+
 ### Structure
 The following tree shows the detail of the `src` folder and a brief explanation
 * `actions`  contains all the custom redux actions
