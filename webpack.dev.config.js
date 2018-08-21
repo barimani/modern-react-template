@@ -14,10 +14,12 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
-        path: resolve(__dirname, 'dist'),
+        path: resolve(__dirname, '/'),
+        publicPath: '/',
     },
     devServer: {
         hot: true,
+        contentBase: resolve(__dirname),
         publicPath: '/',
         historyApiFallback: true
     },
