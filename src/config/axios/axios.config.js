@@ -4,10 +4,20 @@ import Cookies from 'universal-cookie';
 import {insertToken} from "actions/auth";
 const cookies = new Cookies();
 
+
+const UrlMap = {
+    develop: 'http://mydev.com',
+    staging: 'http://mystaging.com',
+    production: 'http://myproduction.com'
+};
+
+
 const configureAxios = () => {
     const isProduction = process.env.NODE_ENV === 'production';
-    const baseURL = isProduction ? 'http://mydev.com' :
-        'http://myproduction.com';
+
+
+    let baseURL = UrlMap[BUILD_TYPE];
+    if (!baseURL) baseURL = UrlMap.develop;
 
     axios.defaults.baseURL = baseURL + '/api';
 

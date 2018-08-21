@@ -11,6 +11,6 @@
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "globals": {
-    "window": true, "require": true, "module": true, "document": true, "process": true, "Promies": true
+    "window": true, "require": true, "module": true, "document": true, "process": true, "Promies": true, "BUILD_TYPE": true
   }
 }

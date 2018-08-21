@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
+    "build-staging": "webpack -p --env.build_type=staging",
+    "build-production": "webpack -p --env.build_type=production",
     "build": "webpack -p",
     "test": "mocha"
   },
@@ -52,6 +54,7 @@
     "babel-loader": "^8.0.0-beta.4",
     "chai": "^4.1.2",
     "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
