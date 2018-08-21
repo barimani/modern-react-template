@@ -72,6 +72,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: true,
             template: resolve(__dirname, 'src/index.html'),
-        })
+        }),
+        new webpack.DefinePlugin({
+            BUILD_TYPE: JSON.stringify('develop')
+        }),
     ]
 };
