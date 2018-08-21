@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from '../store';
+import store from '../store/index';
 import Cookies from 'universal-cookie';
 import {insertToken} from "actions/auth";
 const cookies = new Cookies();

@@ -5,7 +5,7 @@ import load from 'components/load'
 import Cookies from 'universal-cookie';
 import PropTypes from 'prop-types';
 import {insertToken} from './actions/auth';
-import configureAxios from 'config/axios.config';
+import configureAxios from 'config/axios/axios.config';
 import 'styles/test.scss';
 
 configureAxios();
@@ -24,6 +24,7 @@ export default class App extends React.Component {
         this.props.insertToken(token || null);
     }
 
+
     wrap = (Component, protect = false) => {
         const {token} = this.props;
         if (token === undefined) return () => <div>Loading...</div>;
@@ -36,7 +37,7 @@ export default class App extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route exact path="/login" render={this.wrap(load('containers/Login.js'))}/>
+                    <Route exact path="/login" render={this.wrap(load('containers/Login.js'), false)}/>
                     <Route path="/dashboard" render={this.wrap(load('containers/Dashboard'), true)}/>
                     <Redirect from="*" to="/login" />
                 </Switch>
