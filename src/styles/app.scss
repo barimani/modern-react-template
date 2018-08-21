@@ -1,0 +1,29 @@
+.table-page-setter {
+  text-align: center;
+  span {
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 5px;
+    margin: 0 4.5px;
+    color: #8a8e95;
+    cursor: pointer;
+    &.selected {
+      color: black;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    &:first-child, &:last-child {
+      width: auto;
+      margin: 0 20px;
+      color: black;
+      &.disabled {
+        opacity: 0.3;
+        color: #8a8e95;
+        cursor: auto;
+      }
+    }
+  }
+}

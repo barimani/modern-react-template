@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 import PropTypes from 'prop-types';
 import {insertToken} from './actions/auth';
 import configureAxios from 'config/axios/axios.config';
-import 'styles/test.scss';
+import 'styles/app.scss';
 
 configureAxios();
 const cookies = new Cookies();
@@ -30,7 +30,7 @@ export default class App extends React.Component {
         if (token === undefined) return () => <div>Loading...</div>;
         else if (protect && token === null) return () => <Redirect to="/login"/>;
         else if (!protect && token) return () => <Redirect to="/dashboard"/>;
-        else return () => <Component/>
+        else return props => <Component {...props}/>
     };
 
     render() {
@@ -39,6 +39,8 @@ export default class App extends React.Component {
                 <Switch>
                     <Route exact path="/login" render={this.wrap(load('containers/Login.js'), false)}/>
                     <Route path="/dashboard" render={this.wrap(load('containers/Dashboard'), true)}/>
+                    <Route exact path="/contacts" render={this.wrap(load('containers/Contacts'), true)}/>
+                    <Route exact path="/contacts/:contactId" render={this.wrap(load('containers/ContactDetail'), true)}/>
                     <Redirect from="*" to="/login" />
                 </Switch>
             </Router>

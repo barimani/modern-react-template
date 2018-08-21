@@ -5,6 +5,7 @@ import TextField from "components/formComponents/TextField";
 import {connect} from "react-redux";
 import {authenticate} from "../actions/auth";
 import {Button} from "@material-ui/core";
+import 'styles/login.scss';
 
 /** Synchronous validation: checks for email existence and password with minimum 8 characters */
 const validate = (values) => {
@@ -37,7 +38,9 @@ export default class Login extends React.Component {
 
         const { handleSubmit } = this.props;
         return (
-            <form onSubmit={handleSubmit(this.onSubmit)}>
+            <form onSubmit={handleSubmit(this.onSubmit)} className="login">
+                <h3>Modern React Template</h3>
+                <p>Enter any username and password to enter</p>
                 <Field
                     name="username"
                     component={TextField}
@@ -48,7 +51,7 @@ export default class Login extends React.Component {
                     component={TextField}
                     type="password"
                     label="Password"/>
-                <Button type="submit">Submit</Button>
+                <Button variant="outlined" type="submit">Submit</Button>
             </form>
         );
     }
