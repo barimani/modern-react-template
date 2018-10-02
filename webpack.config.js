@@ -39,8 +39,12 @@ module.exports = env => {
                 {
                     test: /\.scss$/,
                     use: [
-                        // fallback to style-loader in development
-                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {
+                                publicPath: '../'
+                            }
+                        },
                         "css-loader",
                         "sass-loader"
                     ]
