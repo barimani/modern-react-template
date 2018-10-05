@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/barimani/modern-react-template#readme",
   "dependencies": {
-    "@material-ui/core": "^1.5.0",
+    "@material-ui/core": "^1.3.0",
+    "@material-ui/icons": "^1.1.0",
     "axios": "^0.18.0",
     "react": "^16.4.2",
     "react-loadable": "^5.5.0",
